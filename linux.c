@@ -96,3 +96,21 @@ totalProcess2=pf2;
 for(count=0;totalProcess2!=0;)
 {
 if(queue2[count].burT<=t2&&queue2[count].burT>0)
+{
+time+=queue2[count].burT;
+queue2[count].burT=0;
+flag=1;
+}
+else if(queue2[count].burT>0)
+{
+queue2[count].burT-=t2;
+time+=t2;
+}
+if(queue2[count].burT==0&&flag==1)
+{
+totalProcess2--;
+queue2[count].turnT=time-queue2[count].arrT;
+queue2[count].waiturnT=queue2[count].turnT-queue2[count].burTcopy;
+printf("%d\t|\t%d\t|\t%d\n",queue2[count].pro_name,queue2[count].turnT,queue2[count].waiturnT);
+turnaround_time+=time-queue2[count].arrT;
+wait_time+=time-queue2[count].arrT-queue2[count].burTcopy;

@@ -114,3 +114,8 @@ queue2[count].waiturnT=queue2[count].turnT-queue2[count].burTcopy;
 printf("%d\t|\t%d\t|\t%d\n",queue2[count].pro_name,queue2[count].turnT,queue2[count].waiturnT);
 turnaround_time+=time-queue2[count].arrT;
 wait_time+=time-queue2[count].arrT-queue2[count].burTcopy;
+for(k=count;k<totalProcess2;k++)
+queue2[k]=queue2[k+1];count--;
+flag=0;
+}
+
